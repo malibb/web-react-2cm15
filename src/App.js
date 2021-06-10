@@ -1,14 +1,61 @@
+import { useState } from 'react';
 import './App.css';
-import LevelsContainer from './Components/LevelsContainer';
+import { userContext } from './context/userContext';
+import { gameContext } from './context/gameContext';
+
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Levels from './Views/Levels';
+import Level from './Views/Level';
+import { levelsFigures, levelsNumbers } from './utils/const';
+import Layout from './components/Layout';
+
 
 function App() {
+  const [user] = useState({
+    name: 'Mali',
+    levels: [{k:1,s:2,t:'F'},{k:1,s:2,t:'F'}, {k:1,s:2,t:'N'}],
+  });
+
+  const [game, setGame] = useState({
+    levelsF: levelsFigures,
+    levelsN: levelsNumbers,
+    actualLevel: {},
+  });
+
+  const dispatchGameEvent = (actionType, payload) => {
+		switch (actionType) {
+			case 'ADD_ACTUAL_LEVEL':
+				setGame({
+          ...game,
+          actualLevel: payload.actualLevel,
+        });
+				return;
+			default:
+				return;
+		}
+	};
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="text-gray-900">Choose Your Level</h1>
-        <LevelsContainer></LevelsContainer>
-      </header>
-    </div>
+    <userContext.Provider value={user}>
+      <gameContext.Provider value={{game, dispatchGameEvent}}>
+        <Router>
+          <Layout>
+            <Switch>
+              <Route exact path="/">
+                <Levels/>
+              </Route>
+              <Route exact path="/level">
+                <Level/>
+              </Route>
+            </Switch>
+          </Layout>
+        </Router>
+      </gameContext.Provider>
+    </userContext.Provider>
   );
 }
 

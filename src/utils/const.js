@@ -1,6 +1,11 @@
 export const levelsFigures = [{
         title: 'Level 1',
         figure: 'circle',
+        answers: [
+            { num: '3', den: '3'},
+            { num: '1', den: '3'},
+            { num: '2', den: '3'}
+        ],
         stars: 3
     },
     {
@@ -53,6 +58,7 @@ export const levelsNumbers = [{
 
 ];
 
+//eslint-disable-next-line import/no-anonymous-default-export
 export default {
     levelsNumbers,
     levelsFigures,

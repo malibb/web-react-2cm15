@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import LevelCard from './LevelCard';
-import { levelsFigures, levelsNumbers } from './../utils/const';
+import { gameContext } from './../context/gameContext';
 
 const LevelsContainer = () => {
-    const [levelsF ] = useState(levelsFigures);
-    const [levelsN] = useState(levelsNumbers);
+    const { game: { levelsF, levelsN } } = useContext(gameContext);
 
     return (
         <div className="grid grid-rows-2 grid-flow-col">
@@ -14,6 +13,7 @@ const LevelsContainer = () => {
                 figure={l.figure}
                 stars={l.stars}
                 key={l.title}
+                answers={l.answers}
             ></LevelCard>)
             }
             </div>
@@ -23,6 +23,7 @@ const LevelsContainer = () => {
                     numberl={l.number}
                     stars={l.stars}
                     key={l.title}
+                    answers={l.answers}
                 ></LevelCard>)
                 }
             </div>
