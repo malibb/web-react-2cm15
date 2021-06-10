@@ -14,6 +14,7 @@ const LevelsContainer = () => {
                 stars={l.stars}
                 key={l.title}
                 answers={l.answers}
+                options={l.options}
             ></LevelCard>)
             }
             </div>
@@ -24,6 +25,7 @@ const LevelsContainer = () => {
                     stars={l.stars}
                     key={l.title}
                     answers={l.answers}
+                    options={l.options}
                 ></LevelCard>)
                 }
             </div>

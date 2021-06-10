@@ -1,33 +1,56 @@
 import React, { useEffect, useRef } from 'react';
 import './Figure.css';
 
-const Figure = ({c, type}) => {
+const Figure = ({c, b, type, cantidad, cantidadColoreada}) => {
     const canvasRef = useRef(null);
 
     const radians = grados => grados * Math.PI / 180;
-    const rand_range = (max, min) => Math.floor((Math.random() * max) + min);
-    const color= () =>"rgb("+rand_range(0, 255)+","+rand_range(0, 255)+","+rand_range(0, 255)+")";
+    const rand_range = (max, k) => Math.floor((Math.random()*max));
+    const color= (k) =>"#"+rand_range(9, k)+""+rand_range(9, k)+""+rand_range(9,k)+"";
 
-    useEffect(() => {
-        const y = 40;
-        const radio = 40;
-        const x = 40;
-        const canvas = canvasRef.current;
-        const contexto = canvas.getContext('2d');
+    const generaPartes = (contexto, x, y, radio) => {
+        for (let i = 0; i < cantidad; i++) {
+          contexto.fillStyle = i< cantidadColoreada ? color(i): '#ffffff';
+          console.log(contexto.fillStyle, rand_range(0,1,i));
+          contexto.beginPath();
+          contexto.moveTo(x, y);
+          var fraccion = 360 / cantidad;
+          var grados = fraccion * i;
+          contexto.arc(x, y, radio, radians(grados), radians(grados + fraccion));
+          contexto.fill();
+          contexto.stroke();
+          contexto.closePath();
+        }  
+      }
+
+    const makeCircle = (contexto, x, y, radio) => {
         contexto.fillStyle = c || '#e7de98';
-        contexto.strokeStyle = "#FFF81F";
-        contexto.lineWidth = 2;
+        contexto.strokeStyle = b || "#000000";
+        contexto.lineWidth = 1;
 
         contexto.beginPath();
         contexto.arc(x, y, radio, 0, radians(360));
         contexto.fill();
+        contexto.stroke();
         contexto.closePath();
+    };
 
+    useEffect(() => {
+        const y = 42;
+        const radio = 40;
+        const x = 42;
+        const canvas = canvasRef.current;
+        const contexto = canvas.getContext('2d');
+
+        makeCircle(contexto, x, y, radio);
         
+        if(cantidad) {
+            generaPartes(contexto, x, y, radio);
+        }
     })
     return (
         <div>
-            <canvas ref={canvasRef} width="80" height="80">
+            <canvas ref={canvasRef} width="84" height="84">
             </canvas>
         </div>
     );
