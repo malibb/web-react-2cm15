@@ -31,7 +31,17 @@ export const levelsFigures = [{
     {
         title: 'Level 3',
         figure: 'triangle',
-        stars: 3
+        stars: 3,
+        answers: [
+            { num: '1', den: '2'},
+            { num: '1', den: '4'},
+            { num: '2', den: '3'}
+        ],
+        options: [
+            { num: '1', den: '4'},
+            { num: '1', den: '2'},
+            { num: '1', den: '3'}
+        ],
     },
     {
         title: 'Level 4',
