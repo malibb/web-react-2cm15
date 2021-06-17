@@ -73,11 +73,11 @@ const DragFigureBox = ({ children }) => {
           var fraccion = 360 / val.den;
           var grados = fraccion * val.num;
           console.log('Inicio',inicio,'Fraccion',fraccion,'grados', grados);
-          contexto.arc(42, 42, 40, radians(inicio), radians(grados + fraccion));
+          contexto.arc(42, 42, 40, radians(inicio), radians(inicio + fraccion));
           contexto.fill();
           contexto.stroke();
           contexto.closePath();
-          inicio = fraccion;
+          inicio = inicio + fraccion;
         }
     }
 
@@ -93,7 +93,7 @@ const DragFigureBox = ({ children }) => {
     },[]);
 
     useEffect(()=>{
-        console.log('Me ejecuté', !!item, item)
+        // console.log('Me ejecuté', !!item, item)
         if(item) {
             // console.log(item, count)
             const [denT, numT] = getName(item);
