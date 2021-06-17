@@ -1,8 +1,24 @@
 import React, { useEffect, useRef } from 'react';
+import { useDrag } from 'react-dnd';
 import './Figure.css';
 
-const Figure = ({c, b, type, cantidad, cantidadColoreada}) => {
+const Figure = ({c, b, type, id , cantidad, cantidadColoreada}) => {
     const canvasRef = useRef(null);
+
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: 'figure',
+        item: { name: id },
+        end: (item, monitor) => {
+            const dropResult = monitor.getDropResult();
+            if (item && dropResult) {
+                console.log(item, dropResult);
+            }
+        },
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
+            handlerId: monitor.getHandlerId(),
+        }),
+    }));
 
     const radians = grados => grados * Math.PI / 180;
     const rand_range = (max, k) => Math.floor((Math.random()*max));
@@ -11,7 +27,7 @@ const Figure = ({c, b, type, cantidad, cantidadColoreada}) => {
     const generaPartes = (contexto, x, y, radio) => {
         for (let i = 0; i < cantidad; i++) {
           contexto.fillStyle = i< cantidadColoreada ? color(i): '#ffffff';
-          console.log(contexto.fillStyle, rand_range(0,1,i));
+          // console.log(contexto.fillStyle, rand_range(0,1,i));
           contexto.beginPath();
           contexto.moveTo(x, y);
           var fraccion = 360 / cantidad;
@@ -49,7 +65,7 @@ const Figure = ({c, b, type, cantidad, cantidadColoreada}) => {
         }
     })
     return (
-        <div>
+        <div ref={drag}>
             <canvas ref={canvasRef} width="84" height="84">
             </canvas>
         </div>

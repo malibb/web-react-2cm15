@@ -2,6 +2,7 @@ import React from 'react';
 import Answers from './Answers';
 import Figure from './Figure';
 import OptionsBox from './OptionsBox';
+import DragFigureBox from './DragFigureBox';
 import Sidebar from './Sidebar';
 
 const Level = ({title, figure, options, answers}) => {
@@ -13,8 +14,9 @@ const Level = ({title, figure, options, answers}) => {
             <div className="w-5/6">
                 <p className="">{title}</p>
                 <div className="flex flex-wrap">
-                    <div className="min-w-full h-72 my-5 flex items-center	justify-center">   
-                        <Figure c="white" type={figure}></Figure>
+                    <div className="min-w-full h-72 my-5 flex items-center	justify-center">
+                        <DragFigureBox>
+                        </DragFigureBox>
                     </div>
                     <div className="min-w-full h-36 my-5 flex items-center	justify-center">
                         <OptionsBox options={options}></OptionsBox>

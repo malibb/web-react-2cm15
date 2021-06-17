@@ -13,6 +13,8 @@ import Levels from './Views/Levels';
 import Level from './Views/Level';
 import { levelsFigures, levelsNumbers } from './utils/const';
 import Layout from './components/Layout';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 
 function App() {
@@ -49,7 +51,9 @@ function App() {
                 <Levels/>
               </Route>
               <Route exact path="/level">
-                <Level/>
+                <DndProvider backend={HTML5Backend}>
+                  <Level/>
+                </DndProvider>
               </Route>
             </Switch>
           </Layout>
