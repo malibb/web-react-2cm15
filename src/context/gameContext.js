@@ -3,7 +3,7 @@ import { levelsFigures, levelsNumbers } from '../utils/const';
 import axios from 'axios';
 
 const gameContext = React.createContext(undefined);
-  
+
 const GameProvider = ({ children }) => {
   const [game, setGames] = useState({
     levelsF: levelsFigures,
@@ -11,6 +11,11 @@ const GameProvider = ({ children }) => {
     actualLevel: {},
   });
 
+  const createForm = (inputs) => {
+    const params = new FormData();
+    Object.keys(inputs).map(e => params.append(e, inputs[e]));
+    return params;
+  }
   const getGame = () => {
     axios.get('http://localhost:8080/CrudFracciones/GameInfo')
       .then(({data, status})=> {
@@ -32,62 +37,52 @@ const GameProvider = ({ children }) => {
   };
 
   const createGame = (inputs) => {
-    axios.get('http://localhost:8080/CrudFracciones/GameInfo')
+    const params = createForm(inputs);
+    axios({
+      method: "post",
+      url: 'http://localhost:8080/CrudFracciones/NuevoNivel',
+      data: params,
+      headers: {"Content-Type": "multipart/form-data"}
+    })
       .then(({data, status})=> {
-        setGame({
-          levelsF: data,
-          levelsN: levelsNumbers,
-          actualLevel: {},
-        });
+        //getGame();
         console.log(data, status);
       })
       .catch((e) => {
-        console.log('Hay ocurrido un problema, pero aún puedes utilizar los niveles por default', e);
-        setGame({
-          levelsF: levelsFigures,
-          levelsN: levelsNumbers,
-          actualLevel: {},
-        });
+        console.log('Hay ocurrido un problema', e);
       });
   };
 
-  const editGame = (inputs) => {
-    axios.get('http://localhost:8080/CrudFracciones/GameInfo')
+  const editGame = (inputs, id) => {
+    const params = createForm(inputs);
+    axios({
+      method: "post",
+      url: 'http://localhost:8080/CrudFracciones/UpdateLevel?id='+ id,
+      data: params,
+      headers: {"Content-Type": "multipart/form-data"}
+    })
       .then(({data, status})=> {
-        setGame({
-          levelsF: data,
-          levelsN: levelsNumbers,
-          actualLevel: {},
-        });
+        //getGame();
         console.log(data, status);
       })
       .catch((e) => {
-        console.log('Hay ocurrido un problema, pero aún puedes utilizar los niveles por default', e);
-        setGame({
-          levelsF: levelsFigures,
-          levelsN: levelsNumbers,
-          actualLevel: {},
-        });
+        console.log('Hay ocurrido un problema', e);
       });
   };
 
   const deleteGame = (id) => {
-    axios.get('http://localhost:8080/CrudFracciones/GameInfo')
+    axios({
+      method: "post",
+      url: 'http://localhost:8080/CrudFracciones/DeleteLevel?id='+id,
+      data: {},
+      headers: {"Content-Type": "multipart/form-data"}
+    })
       .then(({data, status})=> {
-        setGame({
-          levelsF: data,
-          levelsN: levelsNumbers,
-          actualLevel: {},
-        });
+        //getGame();
         console.log(data, status);
       })
       .catch((e) => {
-        console.log('Hay ocurrido un problema, pero aún puedes utilizar los niveles por default', e);
-        setGame({
-          levelsF: levelsFigures,
-          levelsN: levelsNumbers,
-          actualLevel: {},
-        });
+        console.log('Hay ocurrido un problema', e);
       });
   };
 

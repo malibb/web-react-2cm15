@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import L from '../components/Level';
-import { useGame } from './../context/gameContext';
 import { CogIcon, TrashIcon} from '@heroicons/react/solid'
 import { Link } from 'react-router-dom';
 import { useGame } from '../context/gameContext';
 
 const Level = () => {
-    const [ { game }, { createGame } ]= useGame();
+    const [ { game }, { deleteGame } ]= useGame();
     const deleteF = () => {
-        deleteGame(game.actualLevel.id);
+        const dlt = window.confirm('¿Seguro que quieres borrar el nivel?')
+        if(dlt){
+            deleteGame(game.actualLevel.id);
+        }
     };
     return (
                 <div><L 
