@@ -16,7 +16,15 @@ const GameProvider = ({ children }) => {
       .then(({data, status})=> {
         setGame(data);
         console.log(status);
-      });
+      })
+      .catch((e) => {
+        console.log('Hay ocurrido un problema, pero aún puedes utilizar los niveles por default', e);
+        setGame({
+          levelsF: levelsFigures,
+          levelsN: levelsNumbers,
+          actualLevel: {},
+        });
+      })
   }, []);
 
   const setGame = (newState) => {
