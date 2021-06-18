@@ -1,24 +1,25 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import { useGame } from './../context/gameContext';
 
 const DragFigureBox = ({ children }) => {
+    const [ {game}, { setGame } ]= useGame();
+
     const [values, setValues ] = useState({});
     const [numG, setNumbG ] = useState(0);
     const [denoG, setDenoG ] = useState(0);
     const [count, setCount ] = useState(0);
     const [item, setItem] = useState(null); 
-    const [id, setId] = useState(null);
     const canvasRef = useRef(null);
 
     const [{ isDragging }, drag] = useDrag(() => ({
         type: 'answer',
         accept: 'figure',
-        item: { name: 'container' },
+        item: { name: 'container-box' },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if (item && dropResult) {
-                alert(`You dropped ${item.name} into ${dropResult.name}!`);
-                setId(item.name);
+                console.log(numG, denoG);
             }
         },
         collect: (monitor) => ({
@@ -31,7 +32,7 @@ const DragFigureBox = ({ children }) => {
         accept: 'figure',
         drop: (item) => {
             isLessThanOne(item);
-            return { name: id }},
+            return { name: numG +'-'+ denoG }},
         collect: (monitor) => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
@@ -93,14 +94,14 @@ const DragFigureBox = ({ children }) => {
     },[]);
 
     useEffect(()=>{
-        // console.log('Me ejecuté', !!item, item)
+        console.log('Me ejecuté', !!item, item)
         if(item) {
             // console.log(item, count)
             const [denT, numT] = getName(item);
             const den = parseInt(denT);
             const num = parseInt(numT);
-            const newNumG = numG*den+num*denoG;
-            const newDenoG = denoG * den;
+            let newNumG = numG*den+num*denoG;
+            let newDenoG = denoG * den;
             // console.log(newNumG, newDenoG);
             const div = (denoG === 0) ? num / den : newNumG / newDenoG;
             // console.log(div, newNumG, newDenoG);
@@ -111,14 +112,18 @@ const DragFigureBox = ({ children }) => {
                 });
                 setCount(()=> count + 1);
                 if(denoG === 0) {
-                    setNumbG(num);
-                    setDenoG(den);
-                } else {
-                    setNumbG(newNumG);
-                    setDenoG(newDenoG);
+                    newNumG = num;
+                    newDenoG = den;
                 }
+                setNumbG(newNumG);
+                setDenoG(newDenoG);
+                setGame( {
+                    ...game,
+                    currentAnswer: {
+                        num:newNumG, den:newDenoG
+                    }
+                })
                 setItem(null);
-                // console.log(count);
             }
         }
     },[item]);

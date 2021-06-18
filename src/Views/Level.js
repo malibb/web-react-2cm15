@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import L from '../components/Level';
-import { gameContext } from './../context/gameContext';
+import { useGame } from './../context/gameContext';
 
 const Level = () => {
-    const { game } = useContext(gameContext);
+    const [{ game }] = useGame();
     return (
                 <L 
                 title={game.actualLevel.title}

@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import './App.css';
-import { userContext } from './context/userContext';
-import { gameContext } from './context/gameContext';
 
 import React from "react";
 import {
@@ -11,10 +9,10 @@ import {
 } from "react-router-dom";
 import Levels from './Views/Levels';
 import Level from './Views/Level';
-import { levelsFigures, levelsNumbers } from './utils/const';
 import Layout from './components/Layout';
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import { GameProvider } from './context/gameContext';
 
 
 function App() {
@@ -23,7 +21,7 @@ function App() {
     levels: [{k:1,s:2,t:'F'},{k:1,s:2,t:'F'}, {k:1,s:2,t:'N'}],
   });
 
-  const [game, setGame] = useState({
+/*   const [game, setGame] = useState({
     levelsF: levelsFigures,
     levelsN: levelsNumbers,
     actualLevel: {},
@@ -32,18 +30,27 @@ function App() {
   const dispatchGameEvent = (actionType, payload) => {
 		switch (actionType) {
 			case 'ADD_ACTUAL_LEVEL':
+        console.log('ADD_ACTUAL_LEVEL');
 				setGame({
           ...game,
           actualLevel: payload.actualLevel,
+          currentAnswer: {}
         });
 				return;
+      case 'CURRENT_ANSWER':
+        console.log('CURRENT_ANSWER');
+        setGame({
+          ...game,
+            currentAnswer: payload.currentAnswer,
+        });
+        return;
 			default:
 				return;
 		}
-	};
+	}; */
+
   return (
-    <userContext.Provider value={user}>
-      <gameContext.Provider value={{game, dispatchGameEvent}}>
+      <GameProvider>
         <Router>
           <Layout>
             <Switch>
@@ -51,15 +58,14 @@ function App() {
                 <Levels/>
               </Route>
               <Route exact path="/level">
-                <DndProvider backend={HTML5Backend}>
+                <DndProvider debugMode={true} backend={HTML5Backend}>
                   <Level/>
                 </DndProvider>
               </Route>
             </Switch>
           </Layout>
         </Router>
-      </gameContext.Provider>
-    </userContext.Provider>
+      </GameProvider>
   );
 }
 

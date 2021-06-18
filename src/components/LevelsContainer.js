@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import LevelCard from './LevelCard';
-import { gameContext } from './../context/gameContext';
+import { useGame } from './../context/gameContext';
 
 const LevelsContainer = () => {
-    const { game: { levelsF, levelsN } } = useContext(gameContext);
+    const [{ game: { levelsF, levelsN } }] = useGame();
 
     return (
         <div className="grid grid-rows-2 grid-flow-col">

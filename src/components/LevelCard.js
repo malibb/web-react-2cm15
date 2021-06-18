@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
 import Stars from './Stars';
-import { gameContext } from './../context/gameContext';
+import { useGame } from './../context/gameContext';
 import { useHistory } from 'react-router';
 
 
 const LevelCard = ({title, figure, numberl, stars, answers, options}) => {
-    const { dispatchGameEvent } = useContext(gameContext);
+    const [{ game }, { setGame }] = useGame();
 
     const history = useHistory();
 
     const chargeLevel = () => {
-        dispatchGameEvent('ADD_ACTUAL_LEVEL', { actualLevel: {title, figure, numberl, stars, answers, options} });
+        setGame( { 
+            ...game,
+            actualLevel: {title, figure, numberl, stars, answers, options} 
+        });
         history.push('/level');
     };
 

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Answers from './Answers';
-import Figure from './Figure';
 import OptionsBox from './OptionsBox';
 import DragFigureBox from './DragFigureBox';
 import Sidebar from './Sidebar';
