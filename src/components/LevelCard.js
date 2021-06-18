@@ -6,7 +6,7 @@ import { CogIcon } from '@heroicons/react/solid'
 
 
 
-const LevelCard = ({title, figure, numberl, stars, answers, options}) => {
+const LevelCard = ({id, title, figure, numberl, stars, answers, options}) => {
     const [{ game }, { setGame }] = useGame();
 
     const history = useHistory();
@@ -14,7 +14,7 @@ const LevelCard = ({title, figure, numberl, stars, answers, options}) => {
     const chargeLevel = () => {
         setGame( { 
             ...game,
-            actualLevel: {title, figure, numberl, stars, answers, options} 
+            actualLevel: {id, title, figure, numberl, stars, answers, options} 
         });
         history.push('/level');
     };

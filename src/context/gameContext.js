@@ -45,7 +45,7 @@ const GameProvider = ({ children }) => {
       headers: {"Content-Type": "multipart/form-data"}
     })
       .then(({data, status})=> {
-        //getGame();
+        getGame();
         console.log(data, status);
       })
       .catch((e) => {
@@ -62,7 +62,7 @@ const GameProvider = ({ children }) => {
       headers: {"Content-Type": "multipart/form-data"}
     })
       .then(({data, status})=> {
-        //getGame();
+        getGame();
         console.log(data, status);
       })
       .catch((e) => {
@@ -78,7 +78,7 @@ const GameProvider = ({ children }) => {
       headers: {"Content-Type": "multipart/form-data"}
     })
       .then(({data, status})=> {
-        //getGame();
+        getGame();
         console.log(data, status);
       })
       .catch((e) => {

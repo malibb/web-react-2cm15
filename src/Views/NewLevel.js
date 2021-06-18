@@ -1,13 +1,15 @@
 import React from 'react';
 import Form from '../components/Form';
 import { forms } from '../utils/const';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useGame } from '../context/gameContext';
 
 const NewLevel = () => {
+    const history = useHistory();
     const [ { game }, { createGame } ]= useGame();
     const create = (inputs) => {
         createGame(inputs);
+        history.push('/');
     };
     return (
         <div>
