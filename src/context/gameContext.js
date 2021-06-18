@@ -74,7 +74,6 @@ const GameProvider = ({ children }) => {
     axios({
       method: "post",
       url: 'http://localhost:8080/CrudFracciones/DeleteLevel?id='+id,
-      data: {},
       headers: {"Content-Type": "multipart/form-data"}
     })
       .then(({data, status})=> {
