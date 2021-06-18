@@ -1,4 +1,5 @@
 export const levelsFigures = [{
+        id: 1,
         title: 'Level 1',
         figure: 'circle',
         answers: [
@@ -14,6 +15,7 @@ export const levelsFigures = [{
         stars: 3
     },
     {
+        id:2,
         title: 'Level 2',
         figure: 'square',
         answers: [
@@ -29,6 +31,7 @@ export const levelsFigures = [{
         stars: 3
     },
     {
+        id:3,
         title: 'Level 3',
         figure: 'triangle',
         stars: 3,
@@ -44,11 +47,13 @@ export const levelsFigures = [{
         ],
     },
     {
+        id:4,
         title: 'Level 4',
         figure: 'square',
         stars: 3
     },
     {
+        id: 5,
         title: 'Level 5',
         figure: 'pentagon',
         stars: 3

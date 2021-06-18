@@ -7,8 +7,9 @@ const LevelsContainer = () => {
 
     return (
         <div className="grid grid-rows-2 grid-flow-col">
-            <div className="flex justify-around">
+            <div className="flex justify-around flex-wrap">
             { levelsF && levelsF.map( l => <LevelCard 
+                id={l.id}
                 title={l.title}
                 figure={l.figure}
                 stars={l.stars}
@@ -17,17 +18,6 @@ const LevelsContainer = () => {
                 options={l.options}
             ></LevelCard>)
             }
-            </div>
-            <div className="flex justify-around">
-                { levelsN && levelsN.map( l => <LevelCard 
-                    title={l.title}
-                    numberl={l.number}
-                    stars={l.stars}
-                    key={l.title}
-                    answers={l.answers}
-                    options={l.options}
-                ></LevelCard>)
-                }
             </div>
         </div>
     );
