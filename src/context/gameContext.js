@@ -11,7 +11,7 @@ const GameProvider = ({ children }) => {
     actualLevel: {},
   });
 
-  useEffect(() => {
+  const getGame = () => {
     axios.get('http://localhost:8080/CrudFracciones/GameInfo')
       .then(({data, status})=> {
         setGame({
@@ -28,18 +28,86 @@ const GameProvider = ({ children }) => {
           levelsN: levelsNumbers,
           actualLevel: {},
         });
+      });
+  };
+
+  const createGame = (inputs) => {
+    axios.get('http://localhost:8080/CrudFracciones/GameInfo')
+      .then(({data, status})=> {
+        setGame({
+          levelsF: data,
+          levelsN: levelsNumbers,
+          actualLevel: {},
+        });
+        console.log(data, status);
       })
+      .catch((e) => {
+        console.log('Hay ocurrido un problema, pero aún puedes utilizar los niveles por default', e);
+        setGame({
+          levelsF: levelsFigures,
+          levelsN: levelsNumbers,
+          actualLevel: {},
+        });
+      });
+  };
+
+  const editGame = (inputs) => {
+    axios.get('http://localhost:8080/CrudFracciones/GameInfo')
+      .then(({data, status})=> {
+        setGame({
+          levelsF: data,
+          levelsN: levelsNumbers,
+          actualLevel: {},
+        });
+        console.log(data, status);
+      })
+      .catch((e) => {
+        console.log('Hay ocurrido un problema, pero aún puedes utilizar los niveles por default', e);
+        setGame({
+          levelsF: levelsFigures,
+          levelsN: levelsNumbers,
+          actualLevel: {},
+        });
+      });
+  };
+
+  const deleteGame = (id) => {
+    axios.get('http://localhost:8080/CrudFracciones/GameInfo')
+      .then(({data, status})=> {
+        setGame({
+          levelsF: data,
+          levelsN: levelsNumbers,
+          actualLevel: {},
+        });
+        console.log(data, status);
+      })
+      .catch((e) => {
+        console.log('Hay ocurrido un problema, pero aún puedes utilizar los niveles por default', e);
+        setGame({
+          levelsF: levelsFigures,
+          levelsN: levelsNumbers,
+          actualLevel: {},
+        });
+      });
+  };
+
+  useEffect(() => {
+    getGame();
   }, []);
 
   const setGame = (newState) => {
       setGames(newState);
-  } 
+  }
+
   const state = [
     {
       game,
     },
     {
       setGame,
+      createGame,
+      editGame,
+      deleteGame,
     }
   ];
   return (

@@ -2,14 +2,18 @@ import React from 'react';
 import Form from '../components/Form';
 import { forms } from '../utils/const';
 import { Link } from 'react-router-dom';
+import { useGame } from '../context/gameContext';
 
 const NewLevel = () => {
-    const login = () => {};
+    const [ { game }, { createGame } ]= useGame();
+    const create = (inputs) => {
+        createGame();
+    };
     return (
         <div>
             <p className="h1">Nuevo nivel</p>
             <Form
-                submit={login} 
+                submit={create} 
                 styling="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" 
                 textBtn="Siguiente"
                 stylingI={'inline-block mt-2 w-1/2 pr-1'}

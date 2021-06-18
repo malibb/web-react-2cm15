@@ -3,9 +3,13 @@ import L from '../components/Level';
 import { useGame } from './../context/gameContext';
 import { CogIcon, TrashIcon} from '@heroicons/react/solid'
 import { Link } from 'react-router-dom';
+import { useGame } from '../context/gameContext';
 
 const Level = () => {
-    const [{ game }] = useGame();
+    const [ { game }, { createGame } ]= useGame();
+    const deleteF = () => {
+        deleteGame(game.actualLevel.id);
+    };
     return (
                 <div><L 
                 title={game.actualLevel.title}
@@ -15,7 +19,7 @@ const Level = () => {
                 <div className="flex content-center justify-center">
                     <div className="flex justify-center items-center bg-gray-50 w-24 h-28 text-xl">
                         <Link to={'/edit/'+ game.actualLevel.id}><CogIcon className="h-10 w-10 fill-current text-gray-600"></CogIcon></Link>
-                        <TrashIcon className="h-10 w-10 fill-current text-red-600"></TrashIcon>
+                        <TrashIcon onClick={() => deleteF()} className="h-10 w-10 fill-current text-red-600"></TrashIcon>
                     </div>
                 </div>
                 </div>
