@@ -11,7 +11,7 @@ const Figure = ({c, b, type, id , cantidad, cantidadColoreada}) => {
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if (item && dropResult) {
-                console.log(item, dropResult);
+                //console.log(item, dropResult);
             }
         },
         collect: (monitor) => ({

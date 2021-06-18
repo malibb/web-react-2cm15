@@ -14,7 +14,11 @@ const GameProvider = ({ children }) => {
   useEffect(() => {
     axios.get('http://localhost:8080/CrudFracciones/GameInfo')
       .then(({data, status})=> {
-        setGame(data);
+        ssetGame({
+          levelsF: data,
+          levelsN: levelsNumbers,
+          actualLevel: {},
+        });
         console.log(data, status);
       })
       .catch((e) => {

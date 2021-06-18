@@ -19,7 +19,14 @@ const DragFigureBox = ({ children }) => {
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if (item && dropResult) {
-                console.log(numG, denoG);
+                console.log(item, dropResult);
+                /*if((parseInt(a.num)/parseInt(a.den)) ===(parseInt(numA)/parseInt(denA))){
+                    setWin(true);
+                }
+                /* setValues({});
+                setCount(0);
+                setNumbG(0);
+                setDenoG(0); */
             }
         },
         collect: (monitor) => ({
@@ -73,7 +80,7 @@ const DragFigureBox = ({ children }) => {
           contexto.moveTo(42, 42);
           var fraccion = 360 / val.den;
           var grados = fraccion * val.num;
-          console.log('Inicio',inicio,'Fraccion',fraccion,'grados', grados);
+          // console.log('Inicio',inicio,'Fraccion',fraccion,'grados', grados);
           contexto.arc(42, 42, 40, radians(inicio), radians(inicio + fraccion));
           contexto.fill();
           contexto.stroke();
@@ -94,7 +101,7 @@ const DragFigureBox = ({ children }) => {
     },[]);
 
     useEffect(()=>{
-        console.log('Me ejecuté', !!item, item)
+        // console.log('Me ejecuté', !!item, item)
         if(item) {
             // console.log(item, count)
             const [denT, numT] = getName(item);

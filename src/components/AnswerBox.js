@@ -3,7 +3,7 @@ import { useDrop } from 'react-dnd';
 import { useGame } from '../context/gameContext';
 import Figure from './Figure';
 
-const AnswerBox = ({id, answer}) => {
+const AnswerBox = ({id, setW, name}) => {
     const [{ game } ]= useGame();
     const [win, setWin] = useState(false);
     const [change, setChange] = useState(false);
@@ -29,6 +29,12 @@ const AnswerBox = ({id, answer}) => {
             }
         }
     },[change]);
+
+    useEffect(() => {
+        if(win) {
+            setW({[name]: true});
+        }
+    },[win]);
     const isActive = canDrop && isOver;
 
     return (
