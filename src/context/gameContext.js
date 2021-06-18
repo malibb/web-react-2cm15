@@ -19,11 +19,13 @@ const GameProvider = ({ children }) => {
   const getGame = () => {
     axios.get('http://localhost:8080/CrudFracciones/GameInfo')
       .then(({data, status})=> {
-        setGame({
-          levelsF: data,
-          levelsN: levelsNumbers,
-          actualLevel: {},
-        });
+        if(JSON.parse(data)){
+          setGame({
+            levelsF: data,
+            levelsN: levelsNumbers,
+            actualLevel: {},
+          });
+        }
         console.log(data, status);
       })
       .catch((e) => {

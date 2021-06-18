@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { useGame } from './../context/gameContext';
+import { ReplyIcon } from '@heroicons/react/solid'
 
 const DragFigureBox = ({ children }) => {
     const [ {game}, { setGame } ]= useGame();
@@ -20,13 +21,6 @@ const DragFigureBox = ({ children }) => {
             const dropResult = monitor.getDropResult();
             if (item && dropResult) {
                 console.log(item, dropResult);
-                /*if((parseInt(a.num)/parseInt(a.den)) ===(parseInt(numA)/parseInt(denA))){
-                    setWin(true);
-                }
-                /* setValues({});
-                setCount(0);
-                setNumbG(0);
-                setDenoG(0); */
             }
         },
         collect: (monitor) => ({
@@ -88,6 +82,16 @@ const DragFigureBox = ({ children }) => {
           inicio = inicio + fraccion;
         }
     }
+    const rehacer = () => {
+        const canvas = canvasRef.current;
+        const contexto = canvas.getContext('2d');
+        makeCircle(contexto, 42, 42, 40);
+        setValues({});
+        setNumbG(0);
+        setDenoG(0);
+        setCount(0);
+        setItem(null); 
+    };
 
     const isActive = canDrop && isOver;
     useEffect(() => {
@@ -145,11 +149,12 @@ const DragFigureBox = ({ children }) => {
     },[count]);
 
     const opacity = isDragging ? 0.0 : 1;
-    return (<div ref={drop}>
-        <div ref={drag} role="Box" className="bg-white w-18 h-18 border border-black rounded-full" style={{ opacity }}>
+    return (<div ref={drop} className="flex flex-col items-end">
+        <div ref={drag} role="Box" className="bg-white w-18 h-18 border border-black rounded-full pt-0 mt-0" style={{ opacity }}>
             <canvas ref={canvasRef} width="84" height="84">
             </canvas>
         </div>
+        <ReplyIcon onClick={rehacer} className="h-10 w-10 full-fill text-gray-900"></ReplyIcon>
         </div>);
 };
 
