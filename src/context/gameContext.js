@@ -15,7 +15,7 @@ const GameProvider = ({ children }) => {
     axios.get('http://localhost:8080/CrudFracciones/GameInfo')
       .then(({data, status})=> {
         setGame(data);
-        console.log(status);
+        console.log(data, status);
       })
       .catch((e) => {
         console.log('Hay ocurrido un problema, pero aún puedes utilizar los niveles por default', e);
