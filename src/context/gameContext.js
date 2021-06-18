@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { levelsFigures, levelsNumbers } from '../utils/const';
-  
+import axios from 'axios';
 
 const gameContext = React.createContext(undefined);
   
@@ -11,8 +11,15 @@ const GameProvider = ({ children }) => {
     actualLevel: {},
   });
 
+  useEffect(() => {
+    axios.get('http://localhost:8080/CrudFracciones/GameInfo')
+      .then(({data, status})=> {
+        setGame(data);
+        console.log(status);
+      });
+  }, []);
+
   const setGame = (newState) => {
-      console.log(newState);
       setGames(newState);
   } 
   const state = [
