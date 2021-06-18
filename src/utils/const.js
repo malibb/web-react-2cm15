@@ -88,8 +88,117 @@ export const levelsNumbers = [{
 
 ];
 
+export const forms = {
+    edit: [
+        {
+            label:'Title: ',
+            type:'text',
+            placeholder:'',
+            required: true,
+            name: 'title',
+        },
+        {
+            label:'Nivel: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'figure',
+        },
+        {
+            label:'Stars',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'stars',
+        },
+        {
+            label:'Nominador 1: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'num1',
+        },
+        {
+            label:'Nominador 2: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'num2',
+        },
+        {
+            label:'Nominador 3: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'num3',
+        },{
+            label:'Denominador 1: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'den1',
+        },
+        {
+            label:'Denominador 2: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'den2',
+        },
+        {
+            label:'Denominador 3: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'den3',
+        },
+        {
+            label:'Opciones nominador 1: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'OPnum1',
+        },
+        {
+            label:'Opciones nominador 2: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'OPnum2',
+        },
+        {
+            label:'Opciones nominador 3: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'OPnum3',
+        },{
+            label:'Opciones denominador 1: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'OPden1',
+        },
+        {
+            label:'Opciones denominador 2: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'OPden2',
+        },
+        {
+            label:'Opciones denominador 3: ',
+            type:'number',
+            placeholder:'',
+            required: true,
+            name: 'OPden3',
+        },
+    ]
+};
+
 //eslint-disable-next-line import/no-anonymous-default-export
 export default {
     levelsNumbers,
     levelsFigures,
+    forms
 };

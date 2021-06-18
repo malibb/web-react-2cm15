@@ -4,8 +4,8 @@ import OptionsBox from './OptionsBox';
 import DragFigureBox from './DragFigureBox';
 import Sidebar from './Sidebar';
 
-const Level = ({title, figure, options, answers}) => {
-    return (
+const Level = ({id,title, figure, options, answers}) => {
+    return (   
         <div className="flex w-screen px-5">
             <div className="w-2/12 pl-5">
                 <Sidebar></Sidebar>
