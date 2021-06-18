@@ -7,7 +7,7 @@ import { useGame } from '../context/gameContext';
 const Edit = () => {
     const [ {game}, { editGame } ]= useGame();
     const edit = (inputs) => {
-        editGame();
+        editGame(inputs);
     };
     return (
         <div className="overflow-auto">

@@ -99,17 +99,10 @@ export const forms = {
         },
         {
             label:'Nivel: ',
-            type:'number',
+            type:'text',
             placeholder:'',
             required: true,
             name: 'figure',
-        },
-        {
-            label:'Stars',
-            type:'number',
-            placeholder:'',
-            required: true,
-            name: 'stars',
         },
         {
             label:'Nominador 1: ',

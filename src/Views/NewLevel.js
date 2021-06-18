@@ -7,7 +7,7 @@ import { useGame } from '../context/gameContext';
 const NewLevel = () => {
     const [ { game }, { createGame } ]= useGame();
     const create = (inputs) => {
-        createGame();
+        createGame(inputs);
     };
     return (
         <div>
