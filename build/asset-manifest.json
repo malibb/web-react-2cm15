@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/CrudFracciones/static/css/main.14fa4836.chunk.css",
+    "main.js": "/CrudFracciones/static/js/main.57ec91a1.chunk.js",
+    "main.js.map": "/CrudFracciones/static/js/main.57ec91a1.chunk.js.map",
+    "runtime-main.js": "/CrudFracciones/static/js/runtime-main.ed751b6c.js",
+    "runtime-main.js.map": "/CrudFracciones/static/js/runtime-main.ed751b6c.js.map",
+    "static/js/2.2c49cbed.chunk.js": "/CrudFracciones/static/js/2.2c49cbed.chunk.js",
+    "static/js/2.2c49cbed.chunk.js.map": "/CrudFracciones/static/js/2.2c49cbed.chunk.js.map",
+    "static/js/3.96c13f17.chunk.js": "/CrudFracciones/static/js/3.96c13f17.chunk.js",
+    "static/js/3.96c13f17.chunk.js.map": "/CrudFracciones/static/js/3.96c13f17.chunk.js.map",
+    "index.html": "/CrudFracciones/index.html",
+    "static/css/main.14fa4836.chunk.css.map": "/CrudFracciones/static/css/main.14fa4836.chunk.css.map",
+    "static/js/2.2c49cbed.chunk.js.LICENSE.txt": "/CrudFracciones/static/js/2.2c49cbed.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed751b6c.js",
+    "static/js/2.2c49cbed.chunk.js",
+    "static/css/main.14fa4836.chunk.css",
+    "static/js/main.57ec91a1.chunk.js"
+  ]
+}

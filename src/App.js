@@ -25,7 +25,7 @@ function App() {
 
   return (
       <GameProvider>
-        <Router>
+        <Router basename="CrudFracciones">
           <Layout>
             <Switch>
               <Route exact path="/">
