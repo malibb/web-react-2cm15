@@ -99,7 +99,7 @@ export const forms = {
         },
         {
             label:'Nivel: ',
-            type:'text',
+            type:'file',
             placeholder:'',
             required: true,
             name: 'figure',
@@ -186,7 +186,23 @@ export const forms = {
             required: true,
             name: 'OPden3',
         },
-    ]
+    ],
+    login: [
+        {
+            label:'Email: ',
+            type:'text',
+            placeholder:'',
+            required: true,
+            name: 'email',
+        },
+        {
+            label:'Pasword: ',
+            type:'password',
+            placeholder:'',
+            required: true,
+            name: 'password',
+        },
+    ],
 };
 
 export default {

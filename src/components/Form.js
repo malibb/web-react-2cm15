@@ -16,8 +16,21 @@ export default function Form({submit, inputsData, textBtn, children, styling, st
         <form onSubmit={handleSubmit} className="container">
             <div className={stylingF || "max-w-xl m-4 p-10 bg-white rounded shadow-xl"}>
                 {inputsData ? 
-                    inputsData.map((i,index) => 
-                    <Input
+                    inputsData.map((i,index) =>
+                    i.type === 'file' ?
+                        <Input
+                            label={i.label}
+                            type={i.type}
+                            key={i.name}
+                            placeholder={i.placeholder}
+                            change={handleInputs}
+                            value={inputs[i.value]}
+                            required={i.required}
+                            name={i.name}
+                            stylingI={stylingI}
+                            styleInput={styleInput}
+                        />
+                    : <Input
                         label={i.label}
                         type={i.type}
                         key={i.name}
