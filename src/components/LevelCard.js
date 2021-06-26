@@ -23,7 +23,7 @@ const LevelCard = ({id, title, figure, numberl, stars, answers, options,type, fi
         if(t==='png' || t==='jpg' || t==='PNG' || t==='JPG') {
             return <img alt="f" src={f}></img>
         } else if(t==='mp4') {
-            return <video width="50" height="50" controls>
+            return <video width="100" height="100" controls>
             <source src={f} type="video/mp4"/>
           Your browser does not support the video tag.
           </video>

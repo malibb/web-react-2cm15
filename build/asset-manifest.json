@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/CrudFracciones/static/css/main.14fa4836.chunk.css",
-    "main.js": "/CrudFracciones/static/js/main.5a90782e.chunk.js",
-    "main.js.map": "/CrudFracciones/static/js/main.5a90782e.chunk.js.map",
+    "main.js": "/CrudFracciones/static/js/main.2f5a923e.chunk.js",
+    "main.js.map": "/CrudFracciones/static/js/main.2f5a923e.chunk.js.map",
     "runtime-main.js": "/CrudFracciones/static/js/runtime-main.0d2a5343.js",
     "runtime-main.js.map": "/CrudFracciones/static/js/runtime-main.0d2a5343.js.map",
     "static/js/2.95193355.chunk.js": "/CrudFracciones/static/js/2.95193355.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.0d2a5343.js",
     "static/js/2.95193355.chunk.js",
     "static/css/main.14fa4836.chunk.css",
-    "static/js/main.5a90782e.chunk.js"
+    "static/js/main.2f5a923e.chunk.js"
   ]
 }
