@@ -29,19 +29,24 @@ export default function Form({submit, inputsData, textBtn, children, styling, st
                             name={i.name}
                             stylingI={stylingI}
                             styleInput={styleInput}
-                        />
-                    : <Input
-                        label={i.label}
+                        />    
+                    : 
+                    <div className={ stylingI }>
+                        <label className="block text-sm text-gray-600">{i.label}</label>
+                        <input 
                         type={i.type}
                         key={i.name}
                         placeholder={i.placeholder}
-                        change={handleInputs}
+                        onChange={handleInputs}
                         value={inputs[i.value]}
                         required={i.required}
+                        accept=".jpg, .jpeg, .png"
                         name={i.name}
-                        stylingI={stylingI}
-                        styleInput={styleInput}
-                    />)
+                        id={i.name}
+                        className={styleInput}
+                        accept="image/*"/>
+                        <p className="help-block text-danger"></p>
+                    </div>)
                     : ''
                 }
                 {children}

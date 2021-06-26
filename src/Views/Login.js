@@ -20,11 +20,9 @@ const Login = () => {
 
     const redirect = () => {
         if(window.sessionStorage.getItem('user')){
-            if(window.sessionStorage.getItem('user')){
-                history.push('/levels');
-            } else {
-                alert('ERROR AL INICIAR SESIÓN')
-            }
+            history.push('/levels');
+        } else {
+            alert('ERROR AL INICIAR SESIÓN')
         }
     };
 

@@ -32,6 +32,11 @@ const LevelCard = ({id, title, figure, numberl, stars, answers, options,type, fi
                 <source src={f} type="audio/mpeg"/>
                 Your browser does not support the video tag.
                 </audio>
+        } else {
+            return<p>
+            <p>{t}</p><p>{f}</p>
+            <div>Hay un problema con la carga de tu contenido</div>
+            </p>
         }
     }
 
