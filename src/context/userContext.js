@@ -24,10 +24,12 @@ const UserProvider = ({ children }) => {
       headers: {"Content-Type": "multipart/form-data"}
     })
       .then(({data, status})=> {
-        setUser(data);
-        if(data.password === 'true') {
+        console.log(data.password);
+        console.log(typeof data.password);
+        if(data.password == 'true') {
           window.sessionStorage.setItem('user',data);
           setIsAuthenticate(true);
+          setUser(data);
         }
         return data;
       })
