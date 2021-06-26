@@ -8,10 +8,20 @@ export default function useForm(callback, defaults){
         console.log('Event', event.target.value);
         console.log('Event', event.target.id);
         
-        setInputs({
-            ...inputs,
-           [event.target.id]:event.target.value
-        });
+        console.log(event.target.type);
+        if(event.target.type === 'file') {
+            setInputs({
+                ...inputs,
+            [event.target.id]:event.target.files[0]
+            });
+        } else {
+            setInputs({
+                ...inputs,
+            [event.target.id]:event.target.value
+            });
+        }
+
+        
         console.log('Inputs', inputs);
         // recibir el evento 
         // cambiar el valor de la propiedad

@@ -10,7 +10,7 @@ const UserProvider = ({ children }) => {
   const createForm = (inputs) => {
     const params = new FormData();
     if ( inputs ) {
-      Object.keys(inputs).map(e => params.append(e, inputs[e]));
+      Object.keys(inputs).map(e => e === 'file' ? params.append(e, inputs[e], inputs[e].name) : params.append(e, inputs[e]));
     }
     return params;
   }
@@ -25,8 +25,10 @@ const UserProvider = ({ children }) => {
     })
       .then(({data, status})=> {
         setUser(data);
+        if(data.password === 'true') {
         window.sessionStorage.setItem('user',data);
         setIsAuthenticate(true);
+      }
         return data;
       })
       .catch((e) => {

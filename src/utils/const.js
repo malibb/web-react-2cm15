@@ -99,7 +99,7 @@ export const forms = {
         },
         {
             label:'Nivel: ',
-            type:'file',
+            type:'text',
             placeholder:'',
             required: true,
             name: 'figure',
@@ -185,6 +185,13 @@ export const forms = {
             placeholder:'',
             required: true,
             name: 'OPden3',
+        },
+        {
+            label: 'Archivo: ',
+            type: 'file',
+            placeholder:'',
+            required: true,
+            name: 'file',
         },
     ],
     login: [
