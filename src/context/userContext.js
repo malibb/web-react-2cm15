@@ -26,16 +26,15 @@ const UserProvider = ({ children }) => {
       .then(({data, status})=> {
         setUser(data);
         if(data.password === 'true') {
-        window.sessionStorage.setItem('user',data);
-        setIsAuthenticate(true);
-      }
+          window.sessionStorage.setItem('user',data);
+          setIsAuthenticate(true);
+        }
         return data;
       })
       .catch((e) => {
         console.log('Hay ocurrido un problema', e);
-        //window.sessionStorage.removeItem('user');
-        window.sessionStorage.setItem('user',true);
-        setIsAuthenticate(true);
+        window.sessionStorage.removeItem('user');
+        setIsAuthenticate(false);
       });
   };
 

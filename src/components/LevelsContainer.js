@@ -16,6 +16,8 @@ const LevelsContainer = () => {
                 key={l.title}
                 answers={l.answers}
                 options={l.options}
+                type={l.tipoArchivo}
+                file={l.archivo}
             ></LevelCard>)
             }
             </div>

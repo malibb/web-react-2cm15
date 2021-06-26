@@ -5,12 +5,13 @@ import { useUser } from '../context/userContext';
 import { Link, useHistory } from 'react-router-dom';
 
 
-const Edit = () => {
-    const [{user, isAuthenticate},{getUser}]= useUser();
+const Login = () => {
+    const [{user},{getUser}]= useUser();
     const history = useHistory();
 
     const login = async (inputs) => {
         getUser(inputs);
+        redirect();
     };
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const Edit = () => {
     }, [user])
 
     const redirect = () => {
-        if(user || window.sessionStorage.getItem('user')){
+        if(window.sessionStorage.getItem('user')){
             if(window.sessionStorage.getItem('user')){
                 history.push('/levels');
             } else {
@@ -43,4 +44,4 @@ const Edit = () => {
     );
 };
 
-export default Edit;
+export default Login;
